@@ -48,6 +48,33 @@ Each of these three parts must be passed separately.
 
 ---
 
+# Package Manager
+
+We are going to use `npm` a lot, but there is more than one.
+
+- [npm](https://www.npmjs.com/)
+- [bower](http://bower.io/)
+- [jspm](http://jspm.io/)
+
+---
+
+## Install
+
+- You need Node.js. Use [`nvm`](https://github.com/creationix/nvm) to install it.
+- `npm` comes with Node.js
+
+---
+
+**Install your first dependency**
+
+```bash
+npm install -g eslint
+```
+
+![right fit](videos/npm-i-g.mov)
+
+---
+
 ## ECMAScript 2015
 
 ECMAScript is a language specification (no implementation). ECMA-262 6<sup>th</sup> is the latest edition but there are already drafts for ES7. You might have heard of it as ES6, ES Next or Harmony.
@@ -447,7 +474,7 @@ function pick(a) {
 		.forEach(function(a) {
 			console.log('* ', a, "\n")
 		})
-	}
+	} 
 }
 ```
 
