@@ -566,6 +566,29 @@ Grids did exist long before they have been used as layout tool for websites. [^G
 
 ---
 
+## Grid
+### Flexbox Grid
+
+The next generation web layout tool.
+
+[Find it here](http://flexboxgrid.com/)
+
+---
+
+## Grid
+### Flexbox
+
+```scss
+.container {
+  display: flex;
+}
+```
+
+[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+[Flexbox at MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
+
+---
+
 # People And Blogs
 ## …you probably should have heared of
 
