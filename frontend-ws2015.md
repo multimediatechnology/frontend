@@ -204,12 +204,140 @@ Use a convention or define one yourself.
 ---
 
 ## Organize Stylesheets
+### Atomic CSS
+
+![](http://bradfrost.com/wp-content/uploads/2012/11/Screen-Shot-2012-11-13-at-5.15.05-PM.png)
+
+---
+
+## Organize Stylesheets
+### Atomic CSS
+
+- It is more a methodology than a convention
+- It is based on 5 levels
+  - Atoms
+  - Molecules
+  - Organisms
+  - Templates
+  - Pages
+
+---
+
+## Organize Stylesheets
+### Atomic CSS
+
+**Atoms**
+
+```html
+<label>
+<input>
+<form>
+```
+
+---
+
+## Atom
+
+![](http://bradfrost.com/wp-content/uploads/2013/06/atoms.jpg)
+
+---
+
+## Organize Stylesheets
+### Atomic CSS
+
+**Molecules**
+`Molecules` are groups of `atoms`.
+
+```html
+<div class="molecule">
+  <input class="atom">
+</div>
+```
+
+---
+
+## Molecule
+
+![](http://bradfrost.com/wp-content/uploads/2013/06/molecule.jpg)
+
+---
+
+## Organize Stylesheets
+### Atomic CSS
+
+**Organisms**
+`Organisms` are groups of `molecules`.
+
+```html
+<div class="organism">
+  <div class="molecule">
+  <div class="molecule">
+  <div class="molecule">
+</div>
+```
+
+---
+
+## Organism
+
+![](http://bradfrost.com/wp-content/uploads/2013/06/organism-examples.jpg)
+
+---
+
+## Organize Stylesheets
+### Atomic CSS
+
+**Templates**
+`Templates` are mostly groups of `organisms`.
+
+---
+
+## Template
+
+![](http://bradfrost.com/wp-content/uploads/2013/06/template1.jpg)
+
+---
+
+## Organize Stylesheets
+### Atomic CSS
+
+**Pages**
+`Pages` are concrete instances of `Templates`.
+
+---
+
+## Page
+
+![](http://bradfrost.com/wp-content/uploads/2013/06/page1.jpg)
+
+---
+
+## Organize Stylesheets
 ### OOCSS
 
 > As with any object-based coding method, the purpose of OOCSS is to encourage code reuse and, ultimately, faster and more efficient stylesheets that are easier to add to and maintain.
 -- Louis Lazaris [^An Introduction To Object Oriented CSS (OOCSS)]
 
 [^An Introduction To Object Oriented CSS (OOCSS)]: [http://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/](http://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/)
+
+---
+
+## Organize Stylesheets
+### OOCSS[^Bootstrap]
+
+![inline](images/oocss-example.png)
+
+[^Bootstrap]: [http://getbootstrap.com/components/](http://getbootstrap.com/components/)
+
+---
+
+## Organize Stylesheets
+### OOCSS
+
+**Resources**
+- http://de.slideshare.net/DanOlsavsky/oocss-20284331
+- http://oocss.org/
+- https://smacss.com/
 
 ---
 
@@ -1009,7 +1137,7 @@ function pick(a) {
 		.forEach(function(a) {
 			console.log('* ', a, "\n")
 		})
-	} 
+	}
 }
 ```
 
