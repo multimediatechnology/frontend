@@ -341,6 +341,162 @@ Use a convention or define one yourself.
 
 ---
 
+## Organize Stylesheets
+### Preprocessors
+
+- SASS
+- LESS
+- Stylus
+- postcss
+
+---
+
+## Organize Stylesheets
+### SASS - Variables
+
+```scss
+$font-family: 'Helvetica Neue', Verdana, sans-serif;
+$brand: red;
+```
+
+---
+
+## Organize Stylesheets
+### SASS - Nesting
+
+```scss
+nav {
+  ul {
+    li {
+      …
+    }
+  }
+}
+```
+
+---
+
+## Organize Stylesheets
+### SASS - Nesting w/ ampersand
+
+```scss
+a {
+  color: red;
+  &:hover {
+    color: blue;
+  }
+}
+```
+
+---
+
+## Organize Stylesheets
+### SASS - Nesting w/ ampersand
+
+```css
+a {
+  color: red;
+}
+a:hover {
+  color: blue;
+}
+```
+
+---
+
+## Organize Stylesheets
+### SASS - Import
+
+```scss
+@import "your_sass_partial"
+```
+
+```scss
+@import "your_sass_partial.css"
+```
+
+---
+
+## Organize Stylesheets
+### SASS - Import
+
+```scss
+@import "_your_sass_partial"
+```
+
+**ATTENTION:** By convention, all files starting with `_` are not compiled to
+an own `.css` file. Use this for partials.
+
+---
+
+## Organize Stylesheets
+### SASS - Mixins
+
+```scss
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+```
+
+```scss
+.box { @include border-radius(10px); }
+```
+
+---
+
+## Organize Stylesheets
+### SASS - Extend/Inheritance
+
+```scss
+.message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  @extend .message;
+  border-color: green;
+}
+```
+
+---
+
+## Organize Stylesheets
+### SASS - Operators
+
+```scss
+div {
+  width: 600px / 960px * 100%;
+}
+```
+
+---
+
+## Organize Stylesheets
+### SASS - Functions
+
+```scss
+a {
+  color: $primary;
+
+  &:hover {
+    color: darker($primary, 20%);
+  }
+}
+```
+
+[SASS Functions](http://sass-lang.com/documentation/Sass/Script/Functions.html)
+
+---
+
+# Grid
+
+---
+
 ## Grid
 
 Grids did exist long before they have been used as layout tool for websites. [^Grid (graphic design)]
@@ -363,115 +519,59 @@ Grids did exist long before they have been used as layout tool for websites. [^G
 
 ---
 
+## Grid
+### Bootstrap
+
+```html
+<div class="row">
+  <div class="col-sm-1">
+  <div class="col-sm-11">
+</div>
+```
+
+```html
+<div class="row">
+  <div class="col-sm-6">
+  <div class="col-sm-6">
+</div>
+```
+
+---
+
+## Grid
+### Bootstrap
+
+```html
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+</div>
+```
+
+---
+
+## Grid
+### Bootstrap
+
+```html
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+</div>
+```
+
+---
+
 # People And Blogs
 ## …you probably should have heared of
 
 - Lea Verou: http://lea.verou.me/
 - Sara Soueidan: http://sarasoueidan.com/
 - Harry Roberts: http://csswizardry.com/
-
----
-
-# GIT
-
----
-
-## Advantages
-
-- Non-linear development
-- Decentralized and complete copies of repositories
-- Cryptographically save
-- Automatic versioning
-
-Everything you need to know is here: [http://git-scm.com/](http://git-scm.com/)
-
----
-
-## GIT is useful…
-
-if you work
-
-- alone
-- as part of a team
-
----
-
-# It is always useful!
-
----
-
-## Non-linear development
-
-- Development without space and time restrictions → Branche
-- Merge branches together → Merge
-- Snapshot development state → Tag
-
-Possible problem: **Merge Conflicts**
-
----
-
-![inline](images/merge-conflict-meme.png)
-
----
-
-## How do we get conflicts?
-
-- Dev **A** works on specific code
-- Dev **B** works on the same code section
-- Dev **A** push his state
-- Dev **B** tries to push it
-	- **MERGE CONFLICT**
-	- Most of the times, GIT is able to solve this for you
-
----
-
-## How does such a conflict look like?
-
-- GIT will let you know
-
-![inline](images/merge-conflict.png)
-
----
-
-## How to resolve conflicts?
-
-- Open affected file(s) and find the marked sections
-
-![inline](images/merge-conflict-patch.png)
-
----
-
-## I have resolved it, what should I do next?
-
-Add and commit your fix:
-- *git-add*
-- *git-commit*
-- *git-push*
-
-![inline](images/merge-conflict-resolved.png)
-
----
-
-## Branching & Merging
-
----
-
-## Scenario
-
-- Many people working together
-- Many people writing source code
-- Many people using *git-pull* all the time
-- Many people are frustrated about conflicts
-
-Thre is a solution for that…
-
----
-
-## Create a branch!
-
----
-
-More about branching and merging!
 
 ---
 
