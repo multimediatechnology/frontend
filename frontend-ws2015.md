@@ -987,6 +987,24 @@ You just manipulate the existing `Array`.
 
 ---
 
+## APIs
+
+---
+
+## APIs
+
+```js
+const a = [1, 2, 3]
+a.includes(1) // true
+a.includes(4) // false
+
+const foo = 'bar'
+foo.includes('a') // true
+foo.includes('d') // false
+```
+
+---
+
 ## Enhanced object literals + freeze
 
 ---
@@ -995,11 +1013,78 @@ You just manipulate the existing `Array`.
 
 ---
 
+## Destructuring
+
+```js
+// one assignment / line
+function defaults(spec) {
+  const {a=1} = spec
+  const {b=2} = spec
+}
+```
+
+---
+
 ## Default, ...rest & ...spread
 
 ---
 
-## Arrow Functions
+## Default, ...rest & ...spread
+
+```js
+function f(x = 12) {
+  return x
+}
+
+f(1) // 1
+f() // 12
+```
+
+---
+
+## Default, ...rest & ...spread
+
+```js
+function f(...x) {
+  return x.length
+}
+
+f(1, 2, 3) // 3
+f(2) // 1
+```
+
+---
+
+## Default, ...rest & ...spread
+
+```js
+function f(x, y, z = 0) {
+  return x + y + z
+}
+
+f(...[1, 2]) // 3
+f(...[1, 2, 3]) // 6
+```
+
+---
+
+## Arrow Functions & Lexical `this`
+
+---
+
+## Arrow Functions & Lexical `this`
+
+```js
+method(function(err) {
+  …
+})
+```
+
+```js
+method(err => {
+  …
+})
+```
 
 ---
 
@@ -1007,7 +1092,210 @@ You just manipulate the existing `Array`.
 
 ---
 
+## Classes
+
+```js
+class A {
+  constructor(a, b) {
+    this.a = a
+    this.b = b
+  }
+  sum() {
+    return this.a + this.b
+  }
+}
+```
+
+---
+
 ## Modules
+
+---
+
+## Modules
+
+* Modular development helps you to structure your projects → Use it everywhere!
+* Different implementations for ECMAScript5 compatible languages
+  * AMD (Asynchronous Module Definition), e.g. [require.js](http://requirejs.org/)
+  * CommonJS, e.g. [Node.js](https://nodejs.org/), [Browserify](http://browserify.org/), [Webpack](http://webpack.github.io/)
+* ECMAScript6 hat eigene Spezifikation für Module + Loader[^es6-modules]
+
+[^es6-modules]: [https://babeljs.io/docs/learn-es2015/#modules](https://babeljs.io/docs/learn-es2015/#modules)
+
+---
+
+## Modules
+### The need for encapsulation
+
+```
+// pseudo namespaces
+window.App = {}
+window.App.MyApp = {}
+```
+
+---
+
+## Modules
+### The need for encapsulation
+
+```
+(function ($) {
+  // add capabilities…
+
+  return my
+}(window.jQuery))
+```
+
+---
+
+## Modules
+### Definition & Loading – AMD
+
+Stands for **Asynchronous Module Definition**[^why-amd].
+
+```js
+define(
+  ['jquery'],
+  function($) {
+    // add capabilities…
+      return {}
+  }
+)
+```
+
+[^why-amd]: http://requirejs.org/docs/whyamd.html#amd
+
+---
+
+## Modules
+### Definition & Loading – CommonJS[^commonjs]
+
+Its origins are on the server, but you can (and should) use it within the browser now.
+
+```js
+var $ = require('jquery')
+
+module.exports = {}
+```
+
+[^commonjs]: http://www.commonjs.org/
+
+---
+
+## Modules
+### Definition & Loading – ES2015
+
+It has become so important, it is now part of the language specification.
+
+```js
+import $ from 'jquery'
+
+export default const {}
+```
+
+---
+
+## Modules
+### Write your own module
+
+```js
+// util.js
+function pluralize() {
+  …
+}
+export default Object.freeze({
+  pluralize
+  …
+})
+```
+
+---
+
+## Modules
+### It's about isolation and reusability
+
+```js
+// foo.js
+String.prototype.trim = function() {
+  …
+}
+```
+**THIS IS BAD!**
+
+---
+
+## Modules
+### It's about isolation and reusability
+
+```js
+// foo.js
+function trim(str) {
+  return str.trim()
+}
+export Object.freeze({
+  trim
+})
+```
+**THIS IS BAD!**
+
+---
+
+## Modules
+### It's about isolation and reusability
+
+```js
+// foo.js
+function padLeft(str, size = 10) {
+  while (str.length < size) str = "0" + str;
+  return str
+}
+export Object.freeze({
+  padLeft
+})
+```
+
+---
+
+## Modules
+### How to use
+
+```js
+import foo from './foo'
+
+console.log(foo.padLeft('10', 4))
+```
+
+---
+
+## Modules
+### How to load?
+
+Due to the nature of how browsers work, a synchronous defnition
+of imports will not work, right?
+
+- Use `browserify` with transforms (`babelify`)
+
+---
+
+## Modules
+### `browserify`
+
+- Use `npm` packages in your browser apps (even `bootstrap`)
+- It can do all the fancy stuff for you, `templates`, `uglify`, `transpile`
+
+```bash
+browserify dist/app.js -t babelify --outfile dist/app.js
+```
+
+---
+
+## Modules
+### Assignment
+
+* New directory `02-modules`
+* Refactor TODOMVC with `modules`
+* New commands to avoid *M$ Windows* build issues
+* But first… let's have a look at the code
 
 ---
 
@@ -1016,6 +1304,24 @@ You just manipulate the existing `Array`.
 ---
 
 ## Generators
+
+---
+
+## Generators
+
+```js
+function* counter(n) {
+  var index = 0
+  while(index < n) {
+    yield index += 1
+  }
+}
+
+var gen = counter(2)
+gen.next().value // 0
+gen.next().value // 1
+gen.next().value // undefined, gen.next().done === true
+```
 
 ---
 
@@ -1318,3 +1624,26 @@ function pick(a) {
 ---
 
 ![](https://media.giphy.com/media/10XpbAw59H1mog/giphy.gif)
+
+---
+
+# Resources
+
+A growing list of resources: Articles, links, videos, slides that you should have
+seen.
+
+---
+
+# Resources
+## Interoperable CSS
+
+---
+
+![](https://www.youtube.com/watch?v=aIyhhHTmsXE&feature=youtu.be)
+
+---
+
+# Resources
+## CSS Modules
+
+- CSS Modules: https://github.com/css-modules/css-modules

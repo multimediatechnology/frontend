@@ -1,6 +1,12 @@
 # system
 .DS_Store
 
+# logs
+*.log
+
+# Node.js
+node_modules/
+
 # files
 assignment/
 
