@@ -1303,6 +1303,59 @@ browserify dist/app.js -t babelify --outfile dist/app.js
 
 ---
 
+## Iterators + for..of
+
+```js
+var alphabet = ['a', 'b', 'c', 'd', …]
+
+for(letter of alphabet) {
+  console.log(letter)
+}
+```
+
+---
+
+## Iterators + for..of[^MDN-Iterators&Generators]
+
+> In JavaScript an iterator is an object that provides a `next()` method which returns the next item in the sequence.
+-- MDN
+
+```js
+const o = {
+  i: 0,
+  next: function() {
+    this i+= 1
+  }
+}
+```
+
+[^MDN-Iterators&Generators]: https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Iteratoren_und_Generatoren
+
+---
+
+## Iterators + for..of[^MDN-Iterators&Generators]
+### Built-in iterables
+
+**String**, **Array**, **TypedArray**, **Map**, **Set**
+
+---
+
+## Iterators + for..of[^MDN-Iterators&Generators]
+### Custom iterables
+
+```js
+let o = {}
+o[Symbol.iterator] = function* () {
+  yield 1
+  yield 2
+  yield 3
+}
+for (let val of o) {
+  console.log(val) // 1, 2, 3
+}
+```
+---
+
 ## Generators
 
 ---
@@ -1326,6 +1379,32 @@ gen.next().value // undefined, gen.next().done === true
 ---
 
 ## Promises
+
+---
+
+## Promises[^MDN-Promise]
+
+```js
+const promise = new Promise((resolve, reject) => {
+  const val = 10
+  resolve(val)
+})
+```
+[^MDN-Promise]: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+---
+
+## Promises
+
+```js
+promise
+  .then(val => {
+    console.log(val) // 10
+  })
+  .catch(err => {
+    console.error(err)
+  })
+```
 
 ---
 
