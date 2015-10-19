@@ -1005,11 +1005,74 @@ foo.includes('d') // false
 
 ---
 
-## Enhanced object literals + freeze
+## Object Literals
+
+---
+
+## Object Literals
+
+```js
+let i = 1
+function next() {
+  …
+}
+const o = {
+  i,
+  next
+}
+```
+
+---
+
+## Object Literals
+
+```js
+const variable = 'test'
+const o = {
+  [variable]: 1,
+  next() {
+    …
+  }
+}
+o[variable] = 1
+```
 
 ---
 
 ## Destructuring
+
+---
+
+## Symbols
+
+---
+
+```js
+const s1 = Symbol('hannes')
+const s2 = Symbol('hannes')
+
+const o = {
+  [s1]: 1,
+  [s2]: 2
+}
+```
+
+---
+
+## Template Strings
+
+
+---
+
+## Template Strings
+
+```js
+const name = 'Hannes'
+const tpl = `My name is ${name}.`
+
+const name = 'Hannes'
+const tpl = 'My name is ' + name + '.'
+```
 
 ---
 
@@ -1404,6 +1467,64 @@ promise
   .catch(err => {
     console.error(err)
   })
+```
+
+---
+
+## Promises
+
+```js
+db.query(function(err, resultset) {
+  if (err) {
+    return throw new Error(err.message)
+  }
+  resultset.forEach(row => {
+    row.username = 'hannes moser'
+    row.save(function(err, user) {
+      if (err) {
+        return …
+      }
+    })
+  })
+})
+
+db
+  .query()
+  .then(saveUsername)
+  .then(function() {
+    return Promise.reject()
+  })
+  .then(val => {
+    console.log(val) // 1
+  })
+  .catch(err => {
+
+  })
+```
+
+---
+
+# Map & Set
+
+---
+
+## Map & Set
+
+```js
+const m = new Map()
+m.set('key', value)
+```
+
+---
+
+## Map & Set
+
+```js
+const s = new Set()
+m
+  .add(1)
+  .add(2)
+  .add(3)
 ```
 
 ---
