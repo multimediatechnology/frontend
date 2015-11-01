@@ -1047,6 +1047,8 @@ o[variable] = 1
 
 ---
 
+## Symbols
+
 ```js
 const s1 = Symbol('hannes')
 const s2 = Symbol('hannes')
