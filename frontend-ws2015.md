@@ -1529,7 +1529,207 @@ m
   .add(3)
 ```
 
+—
+
+# Fetch
+## The new AJAX
+
+—
+
+## Fetch
+
+> The Fetch Standard … defines the fetch() JavaScript API, which exposes most of the networking functionality at a fairly low level of abstraction.
+— [WHATWG – Fetch - Living Standard](https://fetch.spec.whatwg.org/#goals)
+
+—
+
+## Fetch
+
+```javascript
+fetch(`${api.url}/constructors.json?limit=${limit}`)
+```
+
+—
+
+## Fetch
+
+It works with `Promises`
+
+```javascript
+fetch(…)
+	.then(response => { … })
+	.catch(err => { … })
+```
+
+—
+
+## Fetch
+
+It works with [streams](https://streams.spec.whatwg.org/):
+
+```javascript
+fetch(…)
+	.then(response => { // response is a ReadableStream
+		// convert stream into JSON object
+		return response.json() // Promise
+	})
+```
+
 ---
+
+# Test-driven development
+
+—
+
+## TDD
+
+## `npm test`
+
+—
+
+## TDD
+
+Plenty of things to test:
+- Unit tests
+- End to end tests
+- Integration tests
+- Performance tests
+- …
+
+—
+
+## TDD
+
+Plenty of terminology:
+- Trial and error
+- TDD
+- BDD
+- Mock object
+- Fixture
+- setup & teardown
+- …
+
+—
+
+## TDD
+
+Plenty of test runners:
+- mocha
+- tap
+- Protractor
+- Jasmine
+- jest
+- …
+
+—
+
+## TDD
+
+Plenty of assertion libs:
+- should
+- chai
+- …
+
+—
+
+## TDD
+
+Plenty of reporters:
+- spec
+- Dot Matrix
+- tap
+- JSON
+- XUNIT
+- …
+
+—
+
+![inline](images/test-report.png)
+
+—
+
+## TDD
+
+There is also code coverage:
+- istanbul
+- isparta
+- …
+
+—
+
+![inline](images/code-coverage.png)
+
+—
+
+## TDD
+
+```bash
+npm install -D mocha should
+```
+
+—
+
+## TDD
+
+```javascript
+// test/users.js
+export default function() {
+  before(setup)
+  after(teardown)
+  it(‚should create a user‘, done => {
+		const user = new User()
+		user.should.have.property(‚id‘)
+		user.id.should.be.a.String()
+		isUUID(user.id).should.be.true()
+  })
+}
+```
+
+—
+
+## TDD
+
+```javascript
+// test/index.js
+import users from ‚./users‘
+
+describe(‚Users‘, users)
+```
+
+—
+
+## TDD
+
+```javascript
+// test/index.js
+import users from ‚./users‘
+import projects from ‚./projects‘
+
+describe(‚Resources‘, () => {
+  describe(‚Users‘, users)
+  describe(‚Projects‘, projects)
+})
+```
+
+—
+
+## TDD
+
+How to `npm test`:
+
+```json
+{
+  "name": "netiam",
+  "description": "REST API library",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "test:coverage": "istanbul cover _mocha —report lcovonly — -R spec"
+  }
+}
+```
+
+—
 
 ## Code Quality
 
