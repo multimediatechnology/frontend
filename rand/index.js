@@ -17,8 +17,7 @@ var menschen = [
   'Stefanie',
   'Adam',
   'Ryan',
-  'Nico',
-  'Uwe'
+  'Nico'
 ]
 
 // set cnt values
